@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿\# Active Directory Help Desk Lab
 
 
@@ -218,3 +219,7 @@ All scenarios are simulated but reflect real-world IT support tasks.
 
 \---
 
+=======
+# active-directory-helpdesk-lab
+Simulated IT Help Desk environment using Active Directory and Windows Server. Includes password resets, user provisioning, account lockouts, and troubleshooting scenarios documented with ticket-style incident reports and screenshots
+>>>>>>> b5aded3774b0563ffb0612b069bb3a2807ceebba
