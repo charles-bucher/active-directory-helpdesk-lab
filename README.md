@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿\# Active Directory Help Desk Lab
+# Active Directory Help Desk Lab
 
 
 
@@ -74,8 +73,6 @@ helpdesk-lab/
 │ ├── 003-account-locked/
 
 │ ├── 004-login-failure/
-
-│ └── 005-group-permissions/
 
 │
 
@@ -213,13 +210,8 @@ This lab is designed to:
 
 This is a self-directed lab environment created for learning and portfolio purposes.  
 
-All scenarios are simulated but reflect real-world IT support tasks.
 
 
 
 \---
 
-=======
-# active-directory-helpdesk-lab
-Simulated IT Help Desk environment using Active Directory and Windows Server. Includes password resets, user provisioning, account lockouts, and troubleshooting scenarios documented with ticket-style incident reports and screenshots
->>>>>>> b5aded3774b0563ffb0612b069bb3a2807ceebba
