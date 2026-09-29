@@ -2,6 +2,7 @@
 
 Simulated IT help desk environment built using Windows Server and Active Directory.
 
+Lab work began January 2025; published to GitHub April 2026.
 This project replicates real-world Tier 1 IT support operations including user provisioning, authentication troubleshooting, network diagnostics, email issues, printing problems, and software installation support.
 
 Each scenario is documented as a ticket-style incident with investigation steps, resolution actions, and verification results to reflect real support workflows.
