@@ -24,7 +24,7 @@ Navigated to: Users container
 Created new user object:
 Username: jdoe
 Display Name: John Doe
-Assigned temporary password: Welcome123!
+Assigned temporary password: Generated a temporary password (value omitted from public documentation).
 Enabled password policy:
 ✔ User must change password at next logon
 Verified user object creation in ADUC list
@@ -45,5 +45,6 @@ Standard onboarding workflow completed within AD environment (corp.local)
 No group memberships assigned in this task (future step: role-based access assignment depending on department)
 Password policy compliance enforced per onboarding standards
 📎 Evidence
-Screenshot: 001-user-creation_aduc-user-list.png
+Screenshot: 001-user-creation\_aduc-user-list.png
 (Optional improvement: include timestamped ADUC view showing user object creation)
+

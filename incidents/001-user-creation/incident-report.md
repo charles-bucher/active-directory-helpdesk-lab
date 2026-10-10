@@ -22,7 +22,7 @@ User requested a new Active Directory account for access to company systems.
 
 \- Created new user account: jdoe
 
-\- Set temporary password: Welcome123!
+\- Set temporary password: - Generated a temporary password; value omitted from public documentation.
 
 \- Enabled "User must change password at next logon"
 
