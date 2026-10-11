@@ -4,89 +4,163 @@
 
 \## Ticket ID
 
-004-login-failure
+`004-login-failure`
 
 
 
 \## Request
 
-User reported inability to log into workstation/domain using valid credentials.
+User reported being unable to log in to the workstation/domain using their credentials.
 
 
 
 \## Environment
 
-\- Domain: corp.local
+\- \*\*Domain:\*\* `corp.local`
 
-\- System: Windows Server DC01 (Active Directory environment)
+\- \*\*Domain Controller:\*\* `DC01`
 
-\- Tooling: Active Directory Users and Computers (ADUC)
+\- \*\*Affected User:\*\* `jdoe`
+
+\- \*\*Platform:\*\* Windows Server / Active Directory lab
+
+\- \*\*Tooling:\*\* Active Directory Users and Computers (ADUC)
 
 
 
 \## Symptoms
 
-\- User receives login failure message
+\- Login attempt returned an authentication failure.
 
-\- Credentials appear correct but authentication is denied
+\- User could not access the domain using the attempted credentials.
 
-\- No access to domain resources
+\- Additional troubleshooting was required to identify and resolve the issue.
 
 
 
 \## Initial Checks
 
-\- Verified user account exists in Active Directory
+1\. Confirmed the `jdoe` account exists in Active Directory.
 
-\- Confirmed account is not disabled or locked out
+2\. Checked whether the account was disabled or locked.
 
-\- Verified password was recently reset in prior ticket scenarios
+3\. Considered the recent password-reset scenario from Incident 002.
+
+4\. Reviewed the login failure and available diagnostic evidence.
 
 
 
 \## Root Cause Analysis
 
-Login failure likely related to:
+Potential causes of a domain login failure include:
 
-\- Cached credentials mismatch OR
+\- Incorrect or outdated password.
 
-\- Password not updated on client login attempt OR
+\- Account lockout or disabled account.
 
-\- Domain authentication sync delay (Kerberos/AD propagation)
+\- Incorrect username or domain format.
+
+\- Client connectivity or domain authentication problems.
+
+
+
+The exact root cause should only be documented once the diagnostic evidence confirms it.
 
 
 
 \## Action Taken
 
-\- Verified account status in ADUC
+1\. Reviewed the login failure message.
 
-\- Confirmed user credentials (jdoe) are active
+2\. Checked the account status in Active Directory Users and Computers.
 
-\- Ensured password reset policy is applied correctly
+3\. Investigated the issue using the available troubleshooting evidence.
 
-\- Re-tested login after waiting for policy sync
+4\. Retested authentication after the corrective action.
 
 
 
 \## Result
 
-User authentication restored after verifying account status and credentials consistency in Active Directory.
+The lab includes evidence of the login failure, diagnostic troubleshooting, and a subsequent successful login. The precise corrective action should be recorded based on what was actually performed in the lab.
 
 
 
 \## Status
 
-Resolved
+Resolved, based on the successful-login evidence.
 
 
 
-\## Evidence
-
-\- Screenshot: 004-login-failure\_aduc.png
+\## Screenshot Evidence
 
 
 
-\## Notes
+The following filenames match the screenshot folder names currently listed in the repository. The image paths below assume each folder contains a PNG file with the same name.
 
-This scenario demonstrates basic authentication troubleshooting in an Active Directory environment, including verification of account status, credential validation, and domain login flow understanding.
+
+
+\### 1. Login Failure
+
+
+
+!\[Login failure evidence](../../screenshots/004-login-failure-error/004-login-failure-error.png)
+
+
+
+\*\*File:\*\* `screenshots/004-login-failure-error/004-login-failure-error.png`
+
+
+
+Shows the initial authentication failure.
+
+
+
+\### 2. Login Failure Diagnostics
+
+
+
+!\[Login failure diagnostic evidence](../../screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png)
+
+
+
+\*\*File:\*\* `screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png`
+
+
+
+Supports the troubleshooting and diagnostic steps.
+
+
+
+\### 3. Successful Login
+
+
+
+!\[Successful login evidence](../../screenshots/004-login-success/004-login-success.png)
+
+
+
+\*\*File:\*\* `screenshots/004-login-success/004-login-success.png`
+
+
+
+Shows the successful login after troubleshooting.
+
+
+
+\## Skills Demonstrated
+
+\- Active Directory account verification
+
+\- Windows authentication troubleshooting
+
+\- Account status checks
+
+\- Login error investigation
+
+\- Troubleshooting documentation
+
+\- Evidence capture and resolution verification
+
+
 

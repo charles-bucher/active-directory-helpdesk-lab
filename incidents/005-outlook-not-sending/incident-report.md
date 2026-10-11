@@ -1,77 +1,99 @@
-# 🎫 Incident Report – Outlook Not Sending Emails
+# Incident Report: Outlook Unable to Send Emails
 
-## 📌 Ticket Information
+## Ticket Information
 
-* **Ticket ID:** INC-005
-* **Title:** User Unable to Send Emails in Outlook
-* **Priority:** High
-* **Status:** Resolved
+- **Ticket ID:** `INC-005`
+- **Title:** Outlook Emails Stuck in Outbox
+- **Priority:** High
+- **Status:** Resolved, pending any verification not yet completed
+- **Category:** Email / Microsoft Outlook
 
----
+## User Details
 
-## 👤 User Details
+- **Affected User:** `Jane Smith` (lab scenario)
+- **Department:** Finance (lab scenario)
+- **Request Type:** Email Issue
 
-* **Name:** Jane Smith
-* **Department:** Finance
-* **Request Type:** Email Issue
+## Issue Description
 
----
+The user reported that Microsoft Outlook was not sending email messages. Messages remained in the Outbox, preventing them from being sent.
 
-## 🧠 Issue Description
+The objective was to investigate Outlook's connection state, restore normal sending behavior, and verify the outcome.
 
-User reported that emails in Microsoft Outlook were not sending. Messages remained stuck in the Outbox, and new emails could not be delivered.
+## Environment
 
-Receiving emails was functioning normally.
+- **Application:** Microsoft Outlook
+- **User Account:** Lab user account
+- **Network:** Lab environment
+- **Troubleshooting Tools:** Outlook Send/Receive settings and application status indicators
 
----
+## Symptoms
 
-## 🔍 Investigation
+- Email messages remained in the Outbox.
+- Sending messages did not complete as expected.
+- Outlook displayed the **Work Offline** state.
 
-* Confirmed issue by observing multiple emails stuck in the Outbox
-* Verified internet connectivity was active
-* Checked Outlook status bar and identified “Working Offline” mode enabled
-* Reviewed Send/Receive settings
-* Confirmed mailbox was not over quota
-* Verified no credential prompts or authentication failures
+## Investigation
 
----
+1. Reviewed the Outlook status indicator.
+2. Identified that **Work Offline** mode was enabled.
+3. Checked the application's Send/Receive controls.
+4. Considered network connectivity and account authentication as alternative causes.
 
-## 🛠️ Resolution Steps
+## Root Cause
 
-1. Opened Microsoft Outlook
-2. Navigated to **Send/Receive** tab
-3. Disabled **“Work Offline”** mode
-4. Initiated manual **Send/Receive All Folders**
-5. Monitored Outbox as queued emails began sending
-6. Restarted Outlook to ensure settings persisted
+Outlook was in **Work Offline** mode, preventing normal online sending behavior.
 
----
+## Resolution Steps
 
-## ✅ Verification
+1. Opened Microsoft Outlook.
+2. Selected the **Send/Receive** tab.
+3. Disabled **Work Offline** mode.
+4. Initiated **Send/Receive All Folders**.
+5. Checked whether queued messages began sending.
+6. Reopened Outlook, if performed, to check whether normal sending behavior continued.
 
-* Confirmed Outbox cleared successfully
-* Sent test email to internal user → delivered successfully
-* Sent test email to external address → delivered successfully
-* User confirmed ability to send emails normally
+## Verification
 
----
+Verify and document the checks actually completed:
 
-## 📎 Supporting Evidence
+- [ ] Confirmed the Outbox cleared.
+- [ ] Sent a test email to an internal recipient.
+- [ ] Confirmed successful delivery.
+- [ ] Sent a test email to an external recipient.
+- [ ] Confirmed successful delivery.
+- [ ] Confirmed normal sending behavior after restarting Outlook, if tested.
 
-* Screenshot of Outlook in “Work Offline” mode
-* Screenshot of Outbox before and after resolution
-* Screenshot of successful sent email
+Only mark a check complete after observing the result.
 
----
+## Screenshot Evidence
 
-## 🧾 Notes
+The screenshot folders in the repository are named `005-outlook-work-offline` and `005-outlook-send-success`.
 
-* Issue caused by Outlook being in offline mode, likely enabled unintentionally
-* No server-side or account issues identified
-* No escalation required
+### 1. Outlook Work Offline
 
----
+**Evidence folder:** `screenshots/005-outlook-work-offline/`
 
-## 🏁 Outcome
+Shows Outlook's offline state before the corrective action.
 
-Email functionality restored. User able to send and receive emails without further issues.
+### 2. Outlook Send Success
+
+**Evidence folder:** `screenshots/005-outlook-send-success/`
+
+Shows evidence of the sending process after troubleshooting.
+
+> **Note:** Confirm the image filenames and extensions inside these folders before adding Markdown image embeds. The folder names alone do not establish the exact image paths.
+
+## Skills Demonstrated
+
+- Microsoft Outlook troubleshooting
+- Investigating email delivery problems
+- Identifying application connection states
+- Using Send/Receive controls
+- Testing corrective actions
+- Documenting incident resolution
+- Capturing supporting technical evidence
+
+## Outcome
+
+The incident documents the investigation of Outlook's offline state and the corrective action taken to restore normal sending behavior. The incident should remain marked **Resolved** once the successful outcome
