@@ -1,99 +1,89 @@
-# Incident Report: Outlook Unable to Send Emails
+# 🧾 Incident Report: Outlook Send Failure During Wi-Fi Interruption
 
 ## Ticket Information
 
-- **Ticket ID:** `INC-005`
-- **Title:** Outlook Emails Stuck in Outbox
-- **Priority:** High
-- **Status:** Resolved, pending any verification not yet completed
-- **Category:** Email / Microsoft Outlook
+**Ticket ID:** `INC-005`  
+**Issue Type:** Email / Outlook Troubleshooting  
+**Environment:** New Outlook for Windows  
+**Status:** Recovery observed; recipient delivery not independently verified
 
-## User Details
+## 🧩 Summary
 
-- **Affected User:** `Jane Smith` (lab scenario)
-- **Department:** Finance (lab scenario)
-- **Request Type:** Email Issue
+A controlled troubleshooting exercise was performed to observe Outlook's email-sending behavior during a temporary Wi-Fi interruption.
 
-## Issue Description
+A test email was prepared in New Outlook. Wi-Fi was disconnected before the user attempted to send it, and Outlook displayed an error. After Wi-Fi was restored, the test message was located in Sent Items.
 
-The user reported that Microsoft Outlook was not sending email messages. Messages remained in the Outbox, preventing them from being sent.
+The evidence documents the connection interruption and the subsequent appearance of the message in Sent Items. Delivery to the recipient was not independently confirmed.
 
-The objective was to investigate Outlook's connection state, restore normal sending behavior, and verify the outcome.
+## 📌 Request Details
 
-## Environment
+- **Scenario:** Test email encountered a sending problem during a network interruption.
+- **Application:** New Outlook for Windows
+- **Connection:** Wi-Fi
+- **Test subject:** `LAB TEST - INC-005 Outlook Troubleshooting`
+- **Impact:** Test message sending was interrupted during the controlled exercise.
 
-- **Application:** Microsoft Outlook
-- **User Account:** Lab user account
-- **Network:** Lab environment
-- **Troubleshooting Tools:** Outlook Send/Receive settings and application status indicators
+This was a simulated lab scenario, not a report of a verified production-user incident.
 
-## Symptoms
+## 🖥️ Environment
 
-- Email messages remained in the Outbox.
-- Sending messages did not complete as expected.
-- Outlook displayed the **Work Offline** state.
+- **Operating system:** Windows
+- **Email application:** New Outlook
+- **Network connection:** Wi-Fi
+- **Test mailbox:** User's own mailbox
+- **Evidence tools:** Windows Snipping Tool and Git
 
-## Investigation
+## 🔍 Symptoms
 
-1. Reviewed the Outlook status indicator.
-2. Identified that **Work Offline** mode was enabled.
-3. Checked the application's Send/Receive controls.
-4. Considered network connectivity and account authentication as alternative causes.
+- A test email was prepared in Outlook.
+- Wi-Fi was disconnected before the send attempt.
+- Outlook displayed an error during the test.
+- The user initially observed the message in Archive.
+- After Wi-Fi was restored, the message was found in Sent Items.
 
-## Root Cause
+The exact error text was not recorded in the incident notes, so no specific Outlook error code is claimed.
 
-Outlook was in **Work Offline** mode, preventing normal online sending behavior.
+## ⚙️ Troubleshooting Steps
 
-## Resolution Steps
+1. Opened New Outlook and accessed the inbox.
+2. Created a test email addressed to the user's own mailbox.
+3. Used the subject `LAB TEST - INC-005 Outlook Troubleshooting`.
+4. Disconnected Wi-Fi for a controlled network-interruption test.
+5. Attempted to send the test email and captured the resulting error.
+6. Restored the Wi-Fi connection.
+7. Located the test message in Sent Items and captured a screenshot.
 
-1. Opened Microsoft Outlook.
-2. Selected the **Send/Receive** tab.
-3. Disabled **Work Offline** mode.
-4. Initiated **Send/Receive All Folders**.
-5. Checked whether queued messages began sending.
-6. Reopened Outlook, if performed, to check whether normal sending behavior continued.
+## 🧪 Validation
 
-## Verification
+**Observed:**
+- Outlook displayed an error during the disconnected-network test.
+- After Wi-Fi was restored, the test message appeared in Sent Items.
 
-Verify and document the checks actually completed:
+**Not independently verified:**
+- Receipt of the message in the destination inbox.
+- Successful delivery beyond the Sent Items state.
+- Whether the original error was caused exclusively by the Wi-Fi interruption.
 
-- [ ] Confirmed the Outbox cleared.
-- [ ] Sent a test email to an internal recipient.
-- [ ] Confirmed successful delivery.
-- [ ] Sent a test email to an external recipient.
-- [ ] Confirmed successful delivery.
-- [ ] Confirmed normal sending behavior after restarting Outlook, if tested.
+The test demonstrates the observed behavior and recovery sequence, but does not establish a broader email-service root cause.
 
-Only mark a check complete after observing the result.
+## ✅ Outcome
 
-## Screenshot Evidence
+The test message was located in Sent Items after network connectivity was restored.
 
-The screenshot folders in the repository are named `005-outlook-work-offline` and `005-outlook-send-success`.
+**Final status:** Recovery observed; recipient delivery not independently verified.
 
-### 1. Outlook Work Offline
+## 📎 Screenshot Evidence
 
-**Evidence folder:** `screenshots/005-outlook-work-offline/`
+1. `screenshots/005-outlook-not-sending/005-outlook-network-failure.png`  
+   Captures the sending error during the Wi-Fi interruption.
 
-Shows Outlook's offline state before the corrective action.
+2. `screenshots/005-outlook-send-success/005-outlook-send-success.png`  
+   Captures the test message in Sent Items after Wi-Fi was restored.
 
-### 2. Outlook Send Success
+## 🧠 Lessons Learned
 
-**Evidence folder:** `screenshots/005-outlook-send-success/`
-
-Shows evidence of the sending process after troubleshooting.
-
-> **Note:** Confirm the image filenames and extensions inside these folders before adding Markdown image embeds. The folder names alone do not establish the exact image paths.
-
-## Skills Demonstrated
-
-- Microsoft Outlook troubleshooting
-- Investigating email delivery problems
-- Identifying application connection states
-- Using Send/Receive controls
-- Testing corrective actions
-- Documenting incident resolution
-- Capturing supporting technical evidence
-
-## Outcome
-
-The incident documents the investigation of Outlook's offline state and the corrective action taken to restore normal sending behavior. The incident should remain marked **Resolved** once the successful outcome
+- Check network connectivity when troubleshooting email-sending failures.
+- Distinguish an error observed during a test from a confirmed root cause.
+- Verify the message's actual folder and status before reporting a resolution.
+- A message appearing in Sent Items is not the same as independently confirming delivery.
+- Keep incident reports aligned with captured evidence.
