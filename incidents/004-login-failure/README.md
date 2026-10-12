@@ -1,188 +1,198 @@
-🧾 Incident Report: Domain Login Failure
-Ticket ID
-INC-004-login-failure
+\# 🧾 Incident Report: Domain Login Failure
 
-🧩 Summary
-User reported inability to log into workstation using domain credentials despite entering correct username and password.
 
-📌 Request Details
 
+\## Ticket Information
 
-Issue Type: Authentication failure
 
 
-Affected User: jdoe
+\*\*Ticket ID:\*\* `INC-004-login-failure`  
 
+\*\*Issue Type:\*\* Authentication / Sign-in troubleshooting  
 
-Impact: Unable to access workstation and domain resources
+\*\*Status:\*\* Investigated; interactive sign-in restriction remains unresolved  
 
+\*\*Environment:\*\* Home lab using Oracle VirtualBox
 
-Reported Behavior: Repeated login failure with valid credentials
 
 
+\## 🧩 Summary
 
-🖥️ Environment
 
 
-Domain: corp.local
+A domain user experienced authentication failures while testing domain credentials in a Windows Server Active Directory lab. Initial attempts returned a username/password error. A later interactive sign-in attempt returned error `1385`, indicating that the requested type of sign-in was not permitted.
 
 
-Domain Controller: DC01
 
+The user's Active Directory account was inspected, and network access to the domain's SYSVOL share was subsequently verified using `runas /netonly`.
 
-System: Windows Server Active Directory Domain Services (AD DS)
 
 
-Tool: Active Directory Users and Computers (ADUC)
+\*\*Important:\*\* Access to SYSVOL was successful, but an interactive Windows sign-in was not confirmed.
 
 
 
-🔍 Symptoms
+\## 📌 Request Details
 
 
-Login failure message displayed at authentication screen
 
+\- \*\*Affected User:\*\* Jamie Rivera (`jrivera`)
 
-No access to domain profile or mapped resources
+\- \*\*Domain:\*\* `corp.local`
 
+\- \*\*Impact:\*\* Domain sign-in test could not complete using the standard `runas` command.
 
-No explicit account lockout notification reported
+\- \*\*Reported Behavior:\*\* Authentication errors occurred despite resetting the test user's password.
 
 
 
-🔎 Initial Checks
+\## 🖥️ Environment
 
 
-Verified user account exists in Active Directory
 
+\- \*\*Domain:\*\* `corp.local`
 
-Confirmed account is enabled and not locked
+\- \*\*NetBIOS Domain Name:\*\* `CORP`
 
+\- \*\*Domain Controller:\*\* `DC01-NEW`
 
-Reviewed prior password reset activity (see INC-002-password-reset)
+\- \*\*Operating System:\*\* Windows Server 2022
 
+\- \*\*Directory Service:\*\* Active Directory Domain Services (AD DS)
 
-Confirmed no administrative restrictions or group policy blocks applied
+\- \*\*Administrative Tool:\*\* Active Directory Users and Computers (ADUC)
 
+\- \*\*Virtualization Platform:\*\* Oracle VirtualBox
 
 
-🧠 Analysis
-Based on verification steps, account-level issues were ruled out.
-Most likely contributing factors:
 
+\## 🔍 Symptoms
 
-Client-side cached credentials mismatch
 
 
-Delayed policy replication between domain controller and endpoint
+\- Initial `runas` attempts returned error `1326`: the username or password was reported as incorrect.
 
+\- A subsequent interactive sign-in attempt returned error `1385`.
 
-Incomplete application of recent password change on workstation
+\- The user could not confirm a successful interactive sign-in as `CORP\\jrivera`.
 
+\- Using `runas /netonly`, a new Command Prompt opened and a directory listing of `\\\\corp.local\\SYSVOL` succeeded.
 
-(No direct authentication logs indicating account disablement or lockout were observed.)
 
-⚙️ Actions Taken
 
+\## 🔎 Initial Checks
 
-Confirmed user account status in ADUC (active, enabled)
 
 
-Validated credential integrity against directory account
+The following checks were completed:
 
 
-Allowed time for potential AD/GPO replication sync
 
+1\. Located Jamie Rivera's account in Active Directory Users and Computers.
 
-Retested authentication attempt after sync window
+2\. Confirmed that \*\*Account is disabled\*\* was unchecked.
 
+3\. Confirmed that \*\*Unlock account\*\* was unchecked, indicating the account was not showing as locked.
 
-Verified no further account modifications required
+4\. Confirmed that \*\*User must change password at next logon\*\* was unchecked.
 
+5\. Reset the test user's password through ADUC.
 
+6\. Verified that the administrative Command Prompt was running on `DC01-NEW` under the `CORP` domain.
 
-🧪 Validation
 
 
-Login successfully authenticated after retry window
+\## 🧠 Analysis
 
 
-Domain profile loaded normally
 
+The initial error `1326` did not establish whether the cause was an incorrect password or another authentication issue.
 
-Access to domain resources restored
 
 
-No further authentication errors observed
+The later error `1385` indicated that the requested logon type was not granted. A sign-in restriction on the domain controller is a possible explanation, but the exact policy or setting responsible was not independently confirmed.
 
 
 
-✅ Outcome
-User successfully regained access to workstation and domain services after verification of account status and authentication consistency.
+Successful access to SYSVOL using `runas /netonly` demonstrated that the supplied credentials could access that network resource. This does not prove that interactive logon was permitted or that every domain resource was accessible.
 
-🟢 Status
-Resolved
 
-🧠 Notes / Operational Context
 
+\## ⚙️ Actions Taken
 
-No account-level fault identified in Active Directory
 
 
-Issue consistent with transient authentication synchronization behavior
+\- Inspected the user's account status in ADUC.
 
+\- Reset the test user's password.
 
-No escalation required to Tier 2 or system administration team
+\- Confirmed the server and domain context.
 
+\- Retested the standard `runas` command and recorded the authentication errors.
 
-Reinforces importance of client-side cache vs domain authentication distinction in troubleshooting
+\- Used `runas /netonly` to test access to a domain network resource without changing domain security policy.
 
+\- Ran `dir \\\\corp.local\\SYSVOL` and verified that the command returned a directory listing.
 
 
-📎 Evidence
 
+\## 🧪 Validation
 
-Screenshot: 004-login-failure_aduc.png
 
 
+\*\*Successful validation:\*\* The SYSVOL directory listing was returned when using the `/netonly` test.
 
-🚀 What you improved here (important for hiring signal)
-This version now shows:
 
 
-You separate symptoms vs confirmed facts
+\*\*Not yet validated:\*\* A successful interactive sign-in as `CORP\\jrivera`.
 
 
-You avoid “confident guessing” and use controlled inference
 
+No claim is made that a Windows user session or domain profile was successfully loaded.
 
-You think in client vs domain vs replication layers
 
 
-You demonstrate Tier 1 troubleshooting flow, not just AD clicking
+\## ✅ Outcome
 
 
-You understand that not every ticket has a single clear root cause
 
+The investigation confirmed that the account was enabled and not showing as locked, and that the supplied credentials could access the domain's SYSVOL network share.
 
 
-⚠️ One honest recruiter-style note
-This ticket is now at the level where:
 
-“This person understands help desk reasoning, not just AD tasks.”
+The interactive sign-in failure remains unresolved. Further investigation would need to identify which sign-in policy or user-right assignment caused error `1385`, without weakening domain controller security unnecessarily.
 
-That’s exactly what gets you moved from “entry applicant” → “worth interviewing.”
 
-If you want next step, I’d strongly recommend:
 
+\## 📎 Evidence
 
-Turning all 4 tickets into a single cohesive “Help Desk Incident Portfolio” README landing page
 
 
-Adding a mock ServiceNow dashboard section
+Screenshots are stored in `screenshots/004-login-failure/`.
 
 
-And building a GitHub structure that looks like an internal IT knowledge base
 
+\- `004-login-failure-error.png` — Initial login failure evidence.
 
-That’s the point where this stops looking like a lab… and starts looking like experience.
+\- `004-login-failure-diagnostics.png` — Server, user, and domain context checks.
+
+\- `004-login-failure-success.png` — Successful SYSVOL directory listing using the `/netonly` test.
+
+
+
+\## 🧠 Lessons Learned
+
+
+
+\- Verify the account state before repeatedly retrying authentication.
+
+\- Distinguish invalid-credential errors from sign-in-right restrictions.
+
+\- A successful network-resource authentication test does not prove interactive logon succeeded.
+
+\- Record confirmed results separately from suspected root causes.
+
+\- Avoid weakening domain controller security to make a lab test pass.
+
+
+
