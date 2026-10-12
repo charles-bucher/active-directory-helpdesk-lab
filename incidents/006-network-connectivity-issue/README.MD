@@ -1,72 +1,63 @@
-# 🌐 Incident 006 – Network Connectivity Issue
+﻿# ðŸŒ Incident 006: Network Connectivity Troubleshooting
 
-This incident documents a simulated Tier 1 help desk case involving complete loss of network and internet connectivity on a Windows workstation within an Active Directory environment.
+## ðŸ§  Scenario Overview
 
----
+This lab exercise documents the initial investigation of network configuration on a Windows virtual machine running in Oracle VirtualBox.
 
-## 🧠 Scenario Overview
+The objective is to inspect the assigned IP address and use standard troubleshooting commands to investigate network connectivity.
 
-A user reported being unable to access any network resources, including:
+**Environment:** Windows virtual machine
+**Virtualization:** Oracle VirtualBox
+**Observed IPv4 address:** `10.0.2.15`
 
-* Internal file shares
-* Web applications
-* Internet browsing
+## ðŸ” Initial Findings
 
-The issue was isolated to a single workstation, while other users in the same environment remained unaffected.
+- Inspected the network configuration using `ipconfig`.
+- Observed the IPv4 address `10.0.2.15`.
+- Identified the need for additional testing to determine whether the gateway, DNS resolution, and external connectivity are functioning correctly.
 
----
+The observed address is commonly used by VirtualBox's default NAT networking. It does not, by itself, indicate a network failure or DHCP problem.
 
-## 🔍 Key Symptoms
+## ðŸ› ï¸ Troubleshooting Focus Areas
 
-* No internet connectivity
-* “No Internet Access” network status
-* APIPA address assigned (169.254.x.x)
-* Failed ping to default gateway
-* Loss of access to internal network resources
+The investigation can include:
 
----
+- Inspecting adapter settings with `ipconfig /all`
+- Identifying the default gateway and DNS servers
+- Testing gateway reachability with `ping`
+- Checking DNS resolution with `nslookup`
+- Testing external connectivity, if applicable
+- Recording results and capturing screenshots of actual command output
 
-## 🛠️ Troubleshooting Focus Areas
+Only troubleshooting steps that have actually been performed should be documented as completed.
 
-This incident simulates investigation across common network failure points:
+## âš™ï¸ Tools Used
 
-* DHCP lease assignment failure
-* Network adapter configuration issues
-* Physical connectivity validation
-* Local endpoint vs network-wide outage isolation
-* IP addressing and gateway validation
+- `ipconfig`
+- `ipconfig /all`
+- `ping`
+- `nslookup`
+- Oracle VirtualBox network settings
 
----
+## ðŸŽ¯ Learning Outcomes
 
-## ⚙️ Tools Used
+This exercise demonstrates:
 
-* `ipconfig` (IP configuration analysis)
-* `ping` (connectivity testing)
-* Windows Network Status diagnostics
-* Physical port/cable validation
-* DHCP lease renewal process
+- Reading and interpreting IPv4 configuration
+- Understanding the difference between a private IPv4 address and an APIPA address
+- Identifying the default gateway and DNS configuration
+- Using command-line tools to investigate connectivity
+- Documenting findings without assuming an unverified root cause
 
----
+## ðŸ“Ž Related Files
 
-## 🎯 Learning Outcomes
+- `incident-report.md` contains the investigation details and verification status.
+- The `screenshots/` directory contains supporting evidence as it is captured and committed.
 
-This scenario demonstrates practical skills in:
+Add links to individual screenshots here only after confirming that the corresponding files exist in the repository.
 
-* Identifying DHCP-related failures (APIPA detection)
-* Differentiating endpoint vs infrastructure issues
-* Basic network troubleshooting methodology
-* Use of command-line diagnostic tools
-* Structured problem isolation approach
+## ðŸ§­ Tier 1 Help Desk Context
 
----
+Network troubleshooting is a common Tier 1 support responsibility. A structured investigation helps determine whether a problem involves local IP configuration, gateway connectivity, DNS resolution, or external network access.
 
-## 📎 Related Files
-
-* `incident-report.md` → full step-by-step resolution
-* Screenshots → before/after IP configuration and connectivity tests
-
----
-
-## 🧭 Role Simulation Context
-
-This incident simulates a real Tier 1 Help Desk ticket in a corporate Active Directory environment, where rapid isolation of connectivity issues is critical to restoring user productivity.
+**Current status:** Initial IP configuration documented. Further connectivity testing is required before confirming a fault or resolution.

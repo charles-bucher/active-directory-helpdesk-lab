@@ -1,76 +1,93 @@
-# 🎫 Incident Report – Printer Not Working
+# 🖨️ Incident Report: Printer Connectivity and Queue Troubleshooting
 
-## 📌 Ticket Information
+## 🎫 Ticket Information
 
-* **Ticket ID:** INC-007
-* **Title:** User Unable to Print to Network Printer
-* **Priority:** Medium
-* **Status:** Resolved
+- **Ticket ID:** `INC-007-printer-not-working`
+- **Issue Type:** Printer / Printing Troubleshooting
+- **Priority:** Medium
+- **Environment:** Windows support lab
+- **Status:** Investigation documented; resolution requires supporting evidence
 
----
+## 🧩 Summary
 
-## 👤 User Details
+This lab scenario covers troubleshooting a reported printing problem in which print jobs remain in the queue and the printer may appear offline on the workstation.
 
-* **Name:** Sarah Williams
-* **Department:** Human Resources
-* **Request Type:** Printing Issue
+The investigation focuses on distinguishing workstation configuration problems from printer, network, and print-spooler issues.
 
----
+The exact root cause and successful restoration of printing should only be recorded after the relevant checks and tests have been completed.
 
-## 🧠 Issue Description
+## 📌 Issue Description
 
-User reported that print jobs were not being processed when attempting to print to a shared network printer. Documents remained in the print queue and did not reach the printer.
+A simulated user reports being unable to print to a shared network printer. Print jobs may remain queued instead of completing.
 
-Issue impacted ability to print important HR documents.
+**Potential impact:** Delayed printing of business documents.
 
----
+## 🖥️ Environment
+
+- **Operating System:** Windows
+- **Printer Type:** Shared network printer
+- **Troubleshooting Tools:** Windows printer settings, print queue, Print Spooler service, and printer connection settings
 
 ## 🔍 Investigation
 
-* Confirmed issue by sending test print → job remained in queue
-* Checked printer status → device showed as “Offline” on user workstation
-* Verified other users were able to print successfully → ruled out printer hardware failure
-* Checked network connectivity → user workstation connected to network
-* Restarted Print Spooler service → no change
-* Reviewed printer mapping and identified incorrect/outdated printer connection
+The following checks can be used to investigate the reported issue:
 
----
+1. Inspect the print queue for stuck or pending jobs.
+2. Check the printer's displayed status.
+3. Confirm that the workstation has network connectivity.
+4. Review the printer's configured connection or shared printer path.
+5. Check the Print Spooler service if queue processing appears stalled.
+6. Determine whether the problem affects one workstation or multiple users.
 
-## 🛠️ Resolution Steps
+Record only checks that have actually been performed and results that have been observed.
 
-1. Opened **Devices and Printers** on user workstation
-2. Removed existing network printer
-3. Re-added printer using correct network path (\print-server\HR-Printer)
-4. Restarted **Print Spooler** service
-5. Sent test print job
+## 🛠️ Troubleshooting and Resolution
 
----
+If an incorrect or outdated printer connection is confirmed, the corrective workflow may include:
 
-## ✅ Verification
+1. Open the Windows printer settings.
+2. Review the existing shared printer connection.
+3. Remove the outdated connection if appropriate.
+4. Add the correct shared printer path.
+5. Check the Print Spooler service if necessary.
+6. Submit a test print and inspect the result.
 
-* Confirmed printer status displayed as “Ready”
-* Test document printed successfully
-* Cleared stuck print queue
-* User confirmed ability to print normally
+The actual corrective action and final outcome must be updated to match the work completed in the lab.
 
----
+## 🧪 Verification
+
+**Evidence to capture:**
+
+- The initial printer status or queue condition.
+- The printer connection or configuration being investigated.
+- The final printer status after troubleshooting.
+- A successful test print, if performed.
+
+A printer showing **Ready** does not, by itself, prove that a document printed successfully.
 
 ## 📎 Supporting Evidence
 
-* Screenshot of stuck print queue
-* Screenshot of printer showing “Offline” status
-* Screenshot of successful test print
+Add screenshots to the repository after capturing and verifying the files.
 
----
+Suggested evidence:
 
-## 🧾 Notes
+- `screenshots/007-printer-not-working/007-printer-queue-before.png`
+- `screenshots/007-printer-not-working/007-printer-offline.png`
+- `screenshots/007-printer-not-working/007-printer-test-print-success.png`
 
-* Issue caused by incorrect or stale printer mapping
-* No hardware issues identified
-* No escalation required
+These are suggested filenames, not confirmation that the files already exist.
 
----
+## 🧠 Lessons Learned
+
+- Inspect the print queue before changing printer settings.
+- Check whether the issue is isolated to one workstation.
+- Verify the configured shared printer path.
+- Restart services only when troubleshooting findings justify it.
+- Use a test print to validate actual printing functionality.
+- Document the observed root cause and evidence-supported outcome.
 
 ## 🏁 Outcome
 
-Printer functionality restored. User successfully able to print documents without further issues.
+This incident documents a Tier 1 printer-troubleshooting workflow. The root cause and successful restoration of printing remain unconfirmed until supported by actual lab results and evidence.
+
+**Final Status:** Investigation documented; resolution pending verification.

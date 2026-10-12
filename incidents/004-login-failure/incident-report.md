@@ -1,166 +1,120 @@
-\# Incident Report: Login Failure
+# 🧾 Incident Report: Windows Domain Login Failure
 
+## 🎫 Ticket Information
 
+- **Ticket ID:** `INC-004-login-failure`
+- **Issue Type:** Authentication / Account Access
+- **Priority:** Medium
+- **Affected User:** `jdoe`
+- **Domain:** `corp.local`
+- **Domain Controller:** `DC01-NEW`
+- **Status:** Successful login documented; exact root cause and corrective action require confirmation
 
-\## Ticket ID
+## 🧩 Summary
 
-`004-login-failure`
+This lab exercise documents troubleshooting a Windows domain login failure in an Active Directory environment.
 
+The workflow covers reviewing the authentication error, checking the affected account in Active Directory Users and Computers (ADUC), examining available diagnostic evidence, and retesting authentication after troubleshooting.
 
+The exact root cause should only be recorded when supported by the diagnostic evidence.
 
-\## Request
+## 📌 Issue Description
 
-User reported being unable to log in to the workstation/domain using their credentials.
+The user reported being unable to sign in to the workstation or domain using the attempted credentials.
 
+A domain login failure can result from several conditions, including incorrect credentials, account restrictions, or problems communicating with a domain controller.
 
+## 🖥️ Environment
 
-\## Environment
+- **Domain:** `corp.local`
+- **Domain Controller:** `DC01-NEW`
+- **Affected Account:** `jdoe`
+- **Platform:** Windows Server / Active Directory lab
+- **Directory Service:** Active Directory Domain Services (AD DS)
+- **Management Tool:** Active Directory Users and Computers (ADUC)
+- **Virtualization Platform:** Oracle VirtualBox
 
-\- \*\*Domain:\*\* `corp.local`
+## 🔍 Initial Checks
 
-\- \*\*Domain Controller:\*\* `DC01`
+1. Checked the affected username and reviewed the login failure.
+2. Located the `jdoe` account in Active Directory.
+3. Reviewed the account's status for relevant restrictions, such as disabled or locked status.
+4. Considered whether credential issues or recent password changes could be relevant.
+5. Reviewed the available diagnostic evidence.
 
-\- \*\*Affected User:\*\* `jdoe`
+Only checks actually performed should be recorded as completed.
 
-\- \*\*Platform:\*\* Windows Server / Active Directory lab
-
-\- \*\*Tooling:\*\* Active Directory Users and Computers (ADUC)
-
-
-
-\## Symptoms
-
-\- Login attempt returned an authentication failure.
-
-\- User could not access the domain using the attempted credentials.
-
-\- Additional troubleshooting was required to identify and resolve the issue.
-
-
-
-\## Initial Checks
-
-1\. Confirmed the `jdoe` account exists in Active Directory.
-
-2\. Checked whether the account was disabled or locked.
-
-3\. Considered the recent password-reset scenario from Incident 002.
-
-4\. Reviewed the login failure and available diagnostic evidence.
-
-
-
-\## Root Cause Analysis
+## 🧠 Root Cause Analysis
 
 Potential causes of a domain login failure include:
 
-\- Incorrect or outdated password.
+- Incorrect or outdated password.
+- Account lockout or disabled status.
+- Incorrect username or domain format.
+- Workstation connectivity or domain controller communication problems.
 
-\- Account lockout or disabled account.
+**Confirmed root cause:** Not specified in the current documentation.
 
-\- Incorrect username or domain format.
+The exact cause should be added once the diagnostic evidence identifies the condition responsible for the failure.
 
-\- Client connectivity or domain authentication problems.
+## 🛠️ Troubleshooting and Resolution
 
+1. Reviewed the initial login failure.
+2. Checked the affected account in Active Directory Users and Computers.
+3. Examined the available diagnostic evidence.
+4. Performed the corrective action used in the lab.
+5. Retested authentication and captured evidence of the subsequent successful login.
 
+Document the specific corrective action once it has been confirmed from the actual lab work.
 
-The exact root cause should only be documented once the diagnostic evidence confirms it.
+## 🧪 Validation
 
+**Evidence described in this lab:**
 
+- Initial authentication failure.
+- Diagnostic troubleshooting evidence.
+- Subsequent successful login.
 
-\## Action Taken
+The successful-login screenshot supports recovery of authentication in the demonstrated scenario. It does not independently establish the exact root cause unless the diagnostic evidence identifies it.
 
-1\. Reviewed the login failure message.
+## 📸 Screenshot Evidence
 
-2\. Checked the account status in Active Directory Users and Computers.
+### 1. Initial Login Failure
 
-3\. Investigated the issue using the available troubleshooting evidence.
+![Login failure evidence](../../screenshots/004-login-failure-error/004-login-failure-error.png)
 
-4\. Retested authentication after the corrective action.
-
-
-
-\## Result
-
-The lab includes evidence of the login failure, diagnostic troubleshooting, and a subsequent successful login. The precise corrective action should be recorded based on what was actually performed in the lab.
-
-
-
-\## Status
-
-Resolved, based on the successful-login evidence.
-
-
-
-\## Screenshot Evidence
-
-
-
-The following filenames match the screenshot folder names currently listed in the repository. The image paths below assume each folder contains a PNG file with the same name.
-
-
-
-\### 1. Login Failure
-
-
-
-!\[Login failure evidence](../../screenshots/004-login-failure-error/004-login-failure-error.png)
-
-
-
-\*\*File:\*\* `screenshots/004-login-failure-error/004-login-failure-error.png`
-
-
+**File:** `screenshots/004-login-failure-error/004-login-failure-error.png`
 
 Shows the initial authentication failure.
 
+### 2. Login Failure Diagnostics
 
+![Login failure diagnostic evidence](../../screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png)
 
-\### 2. Login Failure Diagnostics
+**File:** `screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png`
 
+Supports the troubleshooting investigation.
 
+### 3. Successful Login
 
-!\[Login failure diagnostic evidence](../../screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png)
+![Successful login evidence](../../screenshots/004-login-success/004-login-success.png)
 
+**File:** `screenshots/004-login-success/004-login-success.png`
 
+Shows the subsequent successful login.
 
-\*\*File:\*\* `screenshots/004-login-failure-diagnostics/004-login-failure-diagnostics.png`
+Confirm that all three image files exist at these paths and that their contents match the descriptions.
 
+## 🧠 Lessons Learned
 
+- Verify the affected account before making changes.
+- Check account status and credential-related issues before assuming a root cause.
+- Distinguish observed symptoms from confirmed causes.
+- Retest authentication after corrective action.
+- Use screenshots to support the documented troubleshooting sequence.
 
-Supports the troubleshooting and diagnostic steps.
+## ✅ Outcome
 
+The lab documentation describes an initial login failure, investigation, and subsequent successful authentication.
 
-
-\### 3. Successful Login
-
-
-
-!\[Successful login evidence](../../screenshots/004-login-success/004-login-success.png)
-
-
-
-\*\*File:\*\* `screenshots/004-login-success/004-login-success.png`
-
-
-
-Shows the successful login after troubleshooting.
-
-
-
-\## Skills Demonstrated
-
-\- Active Directory account verification
-
-\- Windows authentication troubleshooting
-
-\- Account status checks
-
-\- Login error investigation
-
-\- Troubleshooting documentation
-
-\- Evidence capture and resolution verification
-
-
-
+**Final Status:** Successful login documented; exact root cause and corrective action should be confirmed against the lab evidence.

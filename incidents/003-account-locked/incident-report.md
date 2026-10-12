@@ -1,156 +1,113 @@
-\# Incident 003: Active Directory Account Lockout
+# 🧾 Incident Report: Active Directory Account Lockout
 
+## 🎫 Ticket Information
 
+- **Ticket ID:** `INC-003-account-locked`
+- **Issue Type:** Account Access / Active Directory
+- **Priority:** Low
+- **Affected User:** `jdoe`
+- **Domain:** `corp.local`
+- **Domain Controller:** `DC01-NEW`
+- **Status:** Account unlock documented; final authentication verification pending
 
-\## Incident Summary
+## 🧩 Summary
 
+This lab exercise simulates a Tier 1 help desk incident involving an Active Directory user account lockout.
 
+The objective is to identify the affected account, inspect its lockout state, unlock the account using Active Directory Users and Computers (ADUC), and verify the resulting account state.
 
-\*\*Ticket ID:\*\* INC-003  
+A successful sign-in must be tested separately before full restoration of access can be confirmed.
 
-\*\*Category:\*\* Account Access / Active Directory  
+## 📌 Issue Description
 
-\*\*Severity:\*\* Low  
+The `jdoe` account was used for an account-lockout troubleshooting exercise in the `corp.local` Active Directory domain.
 
-\*\*Affected User:\*\* `jdoe`  
+An account lockout can prevent authentication after a configured number of unsuccessful sign-in attempts. The lockout policy and the account's actual state should be checked rather than assumed.
 
-\*\*Domain:\*\* `corp.local`  
+## 🖥️ Environment
 
-\*\*Domain Controller:\*\* `DC01`  
+- **Operating System:** Windows Server 2022
+- **Domain:** `corp.local`
+- **Domain Controller:** `DC01-NEW`
+- **Directory Service:** Active Directory Domain Services (AD DS)
+- **Management Tool:** Active Directory Users and Computers (ADUC)
+- **Virtualization Platform:** Oracle VirtualBox
 
-\*\*Status:\*\* Resolved, pending final sign-in verification if not yet tested
+## 🔍 Troubleshooting and Resolution
 
+1. Opened Active Directory Users and Computers on the domain controller.
+2. Located the affected user account, `jdoe`.
+3. Inspected the account to identify its lockout state.
+4. Used the available ADUC account-management options to unlock the account.
+5. Rechecked the account state after the unlock operation.
+6. Identified successful user sign-in as a separate validation step.
 
+Only steps supported by the actual lab work and screenshots should be recorded as completed.
 
-\## Issue Description
+## 🧪 Validation
 
+**Evidence to confirm:**
 
+- The account was locked before the unlock operation.
+- The account was unlocked afterward.
 
-The user account `jdoe` became locked in the Active Directory domain, preventing the user from authenticating with the account.
+**Additional validation required:**
 
+- Successful interactive sign-in using the account.
+- Successful access to the intended domain resources.
+- Confirmation of the applicable account-lockout policy settings.
 
+An unlocked account does not, by itself, prove that authentication is successful.
 
-The objective was to verify the account lockout, identify the relevant account status in Active Directory Users and Computers (ADUC), unlock the account, and confirm the resulting state.
+## 📸 Screenshot Evidence
 
+### 1. Account Locked Before Resolution
 
+![Account locked before resolution](../../screenshots/003-account-locked-before/003-account-locked-before.png)
 
-\## Environment
+**File:** `screenshots/003-account-locked-before/003-account-locked-before.png`
 
+This screenshot should show the account's locked state before the unlock operation.
 
+### 2. Account Unlocked After Resolution
 
-\- Windows Server domain controller: `DC01`
+![Account unlocked after resolution](../../screenshots/003-account-unlocked-after/003-account-unlocked-after.png)
 
-\- Active Directory domain: `corp.local`
+**File:** `screenshots/003-account-unlocked-after/003-account-unlocked-after.png`
 
-\- Management tool: Active Directory Users and Computers (ADUC)
+This screenshot should show the account's state after the unlock operation.
 
-\- Affected account: `jdoe`
+Confirm that both image paths match files that actually exist in the repository.
 
+## ⚙️ Account Lockout Policy
 
+The intended lab policy settings are:
 
-\## Troubleshooting and Resolution
+- **Account lockout threshold:** 5 invalid logon attempts
+- **Account lockout duration:** 15 minutes
+- **Reset account lockout counter after:** 15 minutes
 
+These are intended values, not confirmed configuration. Verify the actual domain policy before reporting them as active settings.
 
+## 🛡️ Prevention and Best Practices
 
-1\. Opened Active Directory Users and Computers on the domain controller.
+- Verify the user's identity according to the organization's support procedures.
+- Check the account's lockout state before making changes.
+- Unlock the correct account and document the action.
+- Investigate repeated lockouts if they continue after the account is unlocked.
+- Validate authentication separately from the administrative unlock operation.
 
-2\. Located the affected user account, `jdoe`.
+## 🧠 Skills Demonstrated
 
-3\. Inspected the account status to verify the lockout.
+- Active Directory Users and Computers (ADUC)
+- User account troubleshooting
+- Account lockout identification and resolution
+- Windows Server administration fundamentals
+- Screenshot evidence capture
+- Incident documentation and post-resolution validation
 
-4\. Unlocked the account using the available Active Directory account-management options.
+## ✅ Outcome
 
-5\. Rechecked the account to verify the post-resolution state.
+This incident documents the account-lockout troubleshooting workflow. The account should only be marked fully resolved after the unlock state has been verified and successful authentication has been tested.
 
-6\. A successful sign-in should be tested separately to confirm end-to-end authentication.
-
-
-
-\## Screenshot Evidence
-
-
-
-The following screenshots correspond to the evidence files in the repository's `screenshots/` directory:
-
-
-
-\### 1. Account Locked Before Resolution
-
-
-
-!\[Account locked before resolution](../../screenshots/003-account-locked-before/003-account-locked-before.png)
-
-
-
-\*\*File:\*\* `screenshots/003-account-locked-before/003-account-locked-before.png`
-
-
-
-Shows the account's state before the unlock action.
-
-
-
-\### 2. Account Unlocked After Resolution
-
-
-
-!\[Account unlocked after resolution](../../screenshots/003-account-unlocked-after/003-account-unlocked-after.png)
-
-
-
-\*\*File:\*\* `screenshots/003-account-unlocked-after/003-account-unlocked-after.png`
-
-
-
-Shows the account's state after the unlock action.
-
-
-
-\## Root Cause and Prevention
-
-
-
-The account reached the configured Active Directory account-lockout threshold. In this lab, the intended policy settings are:
-
-
-
-\- \*\*Account lockout threshold:\*\* 5 invalid logon attempts
-
-\- \*\*Account lockout duration:\*\* 15 minutes
-
-\- \*\*Reset account lockout counter after:\*\* 15 minutes
-
-
-
-These values should be confirmed against the actual domain policy before being treated as verified configuration.
-
-
-
-\## Skills Demonstrated
-
-
-
-\- Active Directory Users and Computers (ADUC)
-
-\- User account troubleshooting
-
-\- Account lockout identification and resolution
-
-\- Windows Server administration
-
-\- Evidence capture and incident documentation
-
-\- Post-resolution verification
-
-
-
-\## Outcome
-
-
-
-The incident documents the account-lockout investigation and unlock procedure. Final authentication success should only be recorded after a successful sign-in has actually been tested.
-
-
-
-
-
+**Final Status:** Account unlock documented; successful sign-in and policy configuration require verification.

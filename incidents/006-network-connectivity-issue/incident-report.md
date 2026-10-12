@@ -1,79 +1,84 @@
-# 🎫 Incident Report – Network Connectivity Issue
+# 🎫 Incident Report: Network Connectivity Troubleshooting
 
 ## 📌 Ticket Information
 
-* **Ticket ID:** INC-006
-* **Title:** User Unable to Access Network Resources
-* **Priority:** High
-* **Status:** Resolved
+- **Ticket ID:** `INC-006-network-connectivity`
+- **Issue Type:** Network Configuration / Connectivity Troubleshooting
+- **Priority:** Medium
+- **Environment:** Windows virtual machine running in Oracle VirtualBox
+- **Status:** Initial IP configuration documented; connectivity verification pending
 
----
+## 🧠 Summary
 
-## 👤 User Details
+This lab exercise documents the initial investigation of network configuration on a Windows virtual machine.
 
-* **Name:** Michael Johnson
-* **Department:** Operations
-* **Request Type:** Network Connectivity
+The objective is to inspect the assigned IP address and use standard troubleshooting commands to determine whether the default gateway, DNS resolution, and external network connectivity are functioning.
 
----
+The available command output shows the IPv4 address `10.0.2.15`. This address is commonly associated with VirtualBox's default NAT networking and does not, by itself, indicate a network fault.
 
-## 🧠 Issue Description
+## 🖥️ Lab Environment
 
-User reported inability to access internal network resources, including shared drives and web applications. The user also stated that internet access was unavailable.
+- **Platform:** Oracle VirtualBox
+- **Operating System:** Windows
+- **Network Configuration:** VirtualBox virtual network adapter
+- **Tools:** Command Prompt, `ipconfig`, `ping`, and `nslookup`
 
-Issue impacted productivity as the user could not perform daily tasks.
+## 🔍 Investigation Performed
 
----
+1. Opened Command Prompt in the Windows virtual machine.
+2. Ran `ipconfig` to inspect the current network configuration.
+3. Observed the IPv4 address `10.0.2.15`.
+4. Documented the observed address for further connectivity investigation.
 
-## 🔍 Investigation
+## 🛠️ Next Troubleshooting Steps
 
-* Confirmed issue by attempting to access internal resources from user’s workstation
-* Verified no internet connectivity (web pages failed to load)
-* Checked network icon status → indicated “No Internet Access”
-* Ran `ipconfig` and identified missing/invalid IP address (APIPA range: 169.254.x.x)
-* Attempted to ping default gateway → request timed out
-* Tested network cable connection and physical link status
-* Compared with another workstation on same network → functioning normally
+The following checks remain to be performed and documented:
 
----
+1. Run `ipconfig /all` to inspect the adapter, subnet mask, default gateway, and DNS servers.
+2. Ping the configured default gateway to test gateway reachability.
+3. Run `nslookup` against a known domain to test DNS resolution.
+4. Test external connectivity if the virtual machine is expected to have internet access.
+5. Capture screenshots of the actual command output and record the results.
 
-## 🛠️ Resolution Steps
+These are planned checks, not completed actions. Update this section as each test is performed.
 
-1. Inspected Ethernet cable connection and reseated cable
-2. Switched to a known working Ethernet port
-3. Ran `ipconfig /release` and `ipconfig /renew`
-4. Confirmed system received valid IP address from DHCP server
-5. Verified default gateway and DNS server assignment
-6. Restarted workstation to ensure stable network configuration
+## 🧪 Verification
 
----
+**Confirmed by the available command output:**
 
-## ✅ Verification
+- The virtual machine has the IPv4 address `10.0.2.15`.
 
-* Confirmed valid IP address assigned (non-APIPA range)
-* Successfully pinged default gateway
-* Successfully accessed internal shared drives
-* Verified internet connectivity via web browser
-* User confirmed full functionality restored
+**Not yet established:**
 
----
+- Whether the default gateway is reachable.
+- Whether DNS resolution is working.
+- Whether external network access is available.
+- Whether a network fault occurred or was successfully resolved.
 
 ## 📎 Supporting Evidence
 
-* Screenshot of `ipconfig` before (APIPA address)
-* Screenshot of `ipconfig` after renewal (valid IP)
-* Screenshot of successful ping to gateway
+The following are intended screenshot filenames. Confirm each file exists and is committed before adding a link to it.
 
----
+- `screenshots/006-network-connectivity-issue/006-ipconfig-before.png`
+- `screenshots/006-network-connectivity-issue/006-ipconfig-after.png`
+- `screenshots/006-network-connectivity-issue/006-connectivity-verified.png`
 
-## 🧾 Notes
+## 🧾 Technical Notes
 
-* Root cause identified as failure to obtain IP address from DHCP (likely due to port or connection issue)
-* Issue resolved without escalation
-* No broader network outage detected
+The IPv4 address `10.0.2.15` is commonly assigned to virtual machines using VirtualBox's default NAT configuration. It is not an APIPA address.
 
----
+An IPv4 address in the `169.254.x.x` range is a link-local address that can indicate a failure to obtain a DHCP lease. The available evidence does not show that condition.
+
+## 🧠 Skills Demonstrated
+
+- Inspecting Windows IP configuration
+- Understanding private IPv4 and APIPA addressing
+- Identifying gateway and DNS configuration
+- Using command-line network troubleshooting tools
+- Recording evidence without assuming an unverified root cause
 
 ## 🏁 Outcome
 
-Network connectivity successfully restored. User regained access to both internal and external resources and resumed normal operations.
+The initial IP configuration was inspected, and the assigned IPv4 address was documented. Additional connectivity tests are required before a network fault, root cause, or successful resolution can be confirmed.
+
+**Final Status:** Initial investigation documented; connectivity verification pending.

@@ -1,156 +1,55 @@
-\# 🧾 Incident Report: Active Directory User Account Creation
+# 🧾 Incident 001: Active Directory User Account Creation
 
+## 📌 Overview
 
+This lab exercise demonstrates a basic Tier 1 help desk user-provisioning workflow using Active Directory Users and Computers (ADUC).
 
-\## Ticket Information
+A new user object, Jamie Rivera (`jrivera`), was created in the `corp.local` domain. The available screenshot confirms that the user object appears in Active Directory.
 
+## 🖥️ Lab Environment
 
+- **Domain:** `corp.local`
+- **Domain Controller:** `DC01-NEW`
+- **Operating System:** Windows Server 2022
+- **Directory Service:** Active Directory Domain Services (AD DS)
+- **Management Tool:** Active Directory Users and Computers (ADUC)
+- **Virtualization Platform:** Oracle VirtualBox
 
-\*\*Ticket ID:\*\* `INC-001-user-creation`  
+## ⚙️ Tasks Demonstrated
 
-\*\*Issue Type:\*\* User Provisioning / Account Creation  
+- Creating a domain user object
+- Specifying a display name and username
+- Locating the created user in Active Directory
+- Capturing screenshot evidence for documentation
 
-\*\*Affected User:\*\* Jamie Rivera (`jrivera`)  
+## 🧪 Evidence and Validation
 
-\*\*Domain:\*\* `corp.local`  
+The available screenshot confirms that Jamie Rivera appears in the Active Directory Users list.
 
-\*\*Status:\*\* User object created; additional account settings not independently verified by the available screenshot
+The screenshot does not independently verify the account's enabled status, password settings, group memberships, or successful sign-in. These should only be described as verified if supported by additional evidence.
 
+## 📸 Screenshot Evidence
 
+![Active Directory user list showing Jamie Rivera](../../screenshots/001-user-creation_aduc-user-list/001-user-creation_aduc-user-list.png)
 
-\## 🧩 Summary
+*Evidence: Jamie Rivera appears in the Active Directory Users list.*
 
+Confirm that this image path matches the actual file in the repository.
 
+## 📄 Related Documentation
 
-A new user account was created in the Active Directory lab to demonstrate a basic user-provisioning workflow. The account was created through Active Directory Users and Computers (ADUC) and appears in the domain's default Users container.
+- [Incident Report](incident-report.md)
 
+## 🎯 Skills Demonstrated
 
+- Active Directory user provisioning
+- Windows Server administration fundamentals
+- ADUC navigation
+- Technical documentation and evidence handling
+- Security-conscious documentation practices
 
-The available screenshot confirms that the Jamie Rivera user object is listed in Active Directory. It does not independently demonstrate the account's password settings, enabled status, or ability to sign in.
+## 🧭 Tier 1 Help Desk Context
 
+Creating user accounts is a common service desk task. Proper documentation records the requested identity, the action performed, and the evidence available to verify completion.
 
-
-\## 📌 Request Details
-
-
-
-\- \*\*Request type:\*\* New user account creation
-
-\- \*\*Display name:\*\* Jamie Rivera
-
-\- \*\*Username:\*\* `jrivera`
-
-\- \*\*Department:\*\* Not specified
-
-\- \*\*Purpose:\*\* Demonstrate account provisioning for domain access
-
-
-
-\## 🖥️ Environment
-
-
-
-\- \*\*Domain:\*\* `corp.local`
-
-\- \*\*NetBIOS domain name:\*\* `CORP`
-
-\- \*\*Domain controller:\*\* `DC01-NEW`
-
-\- \*\*Operating system:\*\* Windows Server 2022
-
-\- \*\*Directory service:\*\* Active Directory Domain Services (AD DS)
-
-\- \*\*Management tool:\*\* Active Directory Users and Computers (ADUC)
-
-\- \*\*Virtualization platform:\*\* Oracle VirtualBox
-
-
-
-\## ⚙️ Actions Taken
-
-
-
-1\. Opened Active Directory Users and Computers.
-
-2\. Navigated to the domain's Users container.
-
-3\. Created the Jamie Rivera user object with the username `jrivera`.
-
-4\. Configured the account during the creation workflow.
-
-5\. Located the user object in the Users list and captured screenshot evidence.
-
-
-
-The temporary password is intentionally excluded from public documentation. The available screenshot does not show the password or independently verify the account's password-related options.
-
-
-
-\## 🧪 Validation
-
-
-
-\*\*Confirmed by screenshot:\*\*
-
-\- Jamie Rivera appears in the Active Directory Users list.
-
-\- The account object is present in the Users container.
-
-
-
-\*\*Not established by the available screenshot:\*\*
-
-\- Whether the account is enabled or disabled.
-
-\- Whether \*\*User must change password at next logon\*\* is enabled.
-
-\- Whether any additional group memberships were assigned.
-
-\- Whether the user successfully signed in.
-
-
-
-These checks require separate evidence before being recorded as verified.
-
-
-
-\## ✅ Outcome
-
-
-
-The user-creation task is documented, and the available screenshot confirms that the Jamie Rivera user object appears in Active Directory.
-
-
-
-\*\*Final status:\*\* User object creation evidenced; account configuration and sign-in validation are not demonstrated by this screenshot.
-
-
-
-\## 📎 Evidence
-
-
-
-\*\*Screenshot:\*\* `screenshots/001-user-creation\_aduc-user-list/001-user-creation\_aduc-user-list.png`
-
-
-
-The screenshot displays the Active Directory Users list with Jamie Rivera selected.
-
-
-
-\## 🧠 Lessons Learned
-
-
-
-\- Verify the user's display name and account identifier before documenting a provisioning task.
-
-\- Capture evidence of the account appearing in Active Directory.
-
-\- Use separate screenshots to prove account configuration, password requirements, and enabled status.
-
-\- Do not equate successful account creation with a successful user sign-in.
-
-\- Exclude temporary passwords and other credentials from public portfolio documentation.
-
-
-
+**Documented outcome:** User object creation evidenced. Additional account configuration and sign-in validation are not established by the available screenshot.

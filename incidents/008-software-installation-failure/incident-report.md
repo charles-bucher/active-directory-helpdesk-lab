@@ -1,77 +1,80 @@
-# 🎫 Incident Report – Software Installation Failure
+# 💿 Incident Report: Software Installation Failure
 
-## 📌 Ticket Information
+## 🎫 Ticket Information
 
-* **Ticket ID:** INC-008
-* **Title:** User Unable to Install Approved Software
-* **Priority:** Medium
-* **Status:** Resolved
-
----
+- **Ticket ID:** `INC-008-software-installation`
+- **Title:** User Unable to Install Approved Software
+- **Priority:** Medium
+- **Environment:** Windows Server lab
+- **Status:** Installation troubleshooting documented; final verification pending
 
 ## 👤 User Details
 
-* **Name:** David Lee
-* **Department:** Marketing
-* **Request Type:** Software Installation
+- **Name:** David Lee
+- **Department:** Marketing
+- **Request Type:** Software Installation
 
----
+*David Lee is a simulated user for this lab exercise.*
 
 ## 🧠 Issue Description
 
-User reported failure when attempting to install approved company software. Installation process terminated with an error indicating insufficient permissions.
+The simulated user reports that an attempted software installation fails with a permissions-related error.
 
-User required the software to complete assigned marketing tasks.
-
----
+The objective is to investigate the installation failure, identify the relevant permission or policy restriction, and determine an appropriate resolution.
 
 ## 🔍 Investigation
 
-* Confirmed installation failure and captured error message
-* Verified software is approved for use within organization
-* Checked user account permissions → standard user (no local admin rights)
-* Reviewed system policies restricting software installation
-* Confirmed installer file integrity and compatibility with operating system
-* Verified sufficient disk space available
+The troubleshooting workflow includes:
 
----
+1. Review the installation error message.
+2. Determine whether the software is approved for use.
+3. Review the account permissions relevant to the installation.
+4. Check applicable installation policies.
+5. Confirm installer compatibility and available disk space.
 
-## 🛠️ Resolution Steps
+Only checks actually performed should be recorded as completed findings.
 
-1. Logged into workstation with administrative credentials
-2. Re-ran installer using **“Run as administrator”**
-3. Followed installation prompts and completed setup
-4. Verified software installed in correct directory
-5. Ensured application shortcuts were accessible to the user
-6. Logged out of admin session and returned system to user
+## 🛠️ Troubleshooting and Resolution
 
----
+When administrative permissions are confirmed as the cause and the installation is authorized:
+
+1. Use an approved administrative account or authorized elevation method.
+2. Run the installer with the required permissions.
+3. Follow the installation prompts.
+4. Confirm the installation completes successfully.
+5. Verify the installed application can be accessed by the intended user.
+
+Administrative credentials should not be shared with the user. Any elevation must follow the organization's software installation policy.
 
 ## ✅ Verification
 
-* Launched application successfully
-* Confirmed no errors during startup
-* User tested core functionality → working as expected
-* Confirmed user can access application without admin privileges
+The final verification should establish:
 
----
+- Whether the installer completed successfully.
+- Whether the application appears in the expected installation location.
+- Whether the application launches without errors.
+- Whether the intended user can access the application.
+
+A successful installation dialog alone does not prove that the application launches or works correctly.
 
 ## 📎 Supporting Evidence
 
-* Screenshot of installation error message
-* Screenshot of successful installation completion
-* Screenshot of application running
+Suggested screenshot locations:
 
----
+- `screenshots/008-software-installation-failure/008-software-installation-failure.png`
+- `screenshots/008-software-installation-failure/008-software-installation-success.png`
 
-## 🧾 Notes
+Add an application-launch screenshot only if you capture one.
 
-* Root cause identified as lack of administrative permissions
-* Installation completed using authorized admin credentials
-* Followed standard IT policy for software installation
+These paths are suggested until the actual files are confirmed.
 
----
+## 🧠 Technical Notes
+
+- Standard user accounts may lack permission to install certain applications.
+- Installation failures can also result from application policy, compatibility, installer integrity, or other restrictions.
+- Administrative elevation should only be used when authorized.
+- The documented root cause must match the observed error and troubleshooting results.
 
 ## 🏁 Outcome
 
-Software successfully installed and operational. User able to perform required tasks without further issues.
+This incident demonstrates a Tier 1 software-installation troubleshooting workflow. The confirmed cause, corrective action, and final operational status should be updated to reflect the actual lab results and available screenshots.
